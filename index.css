@@ -10,8 +10,18 @@ a:hover{
     color:white;
     font-size:2rem;
 }
-.btn-primary{
+.btn-outline-dark{
     margin-left:45rem;
+}
+.logoWrapper{
+    width:100%;
+    text-align: center;
+}
+.LogoImg{
+    width:5rem;
+    height:5rem; 
+    margin-top:18rem;
+    
 }
 .mainWrapper{
     display: flex;
@@ -32,4 +42,38 @@ a:hover{
 #myCheck,#myCheckNew,#myCheck2,#myCheck3 :active{
     border:none;
     background-color: transparent;
+}
+/* ------------------------------------------- */
+#subwrapper{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+#filters{
+    width:20%;
+}
+#table{
+    width:80%;
+    margin-top: 70px;
+}
+.userList-table {
+    border-collapse: collapse;
+}
+.userList-table td,
+.userList-table th {
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+/* --------------------------------------------- */
+.inputFiled{
+    width:30rem;
+    padding:0.4rem;
+    margin-right:1rem;
+    border-radius: 4px;
+}
+.userFormWrapper{
+    display:flex;
+    justify-content:space-around;
 }

@@ -4,22 +4,60 @@ var checkBox = document.getElementById("myCheck");
 var myCheckNew = document.getElementById("myCheckNew");
 var myCheck2 = document.getElementById('myCheck2');
 var myCheck3 = document.getElementById('myCheck3');
-myCheck2.addEventListener('click',()=>{
-    genereateFilterData('InTransit');
 
+myCheck2.addEventListener('click',(e)=>{
+    if(e.target.checked){
+        genereateFilterData('InTransit');
+    }else{
+        genereateWithoutData();
+    }
 });
-myCheck3.addEventListener('click',()=>{
-    genereateFilterData('Delivered');
+myCheck3.addEventListener('click',(e)=>{
+    if(e.target.checked){
+        genereateFilterData('Delivered');
+    }else{
+        genereateWithoutData();
+    }
 
 })
-myCheckNew.addEventListener('click',()=>{
-    genereateFilterData('New');
+myCheckNew.addEventListener('click',(e)=>{
+    if(e.target.checked){
+        genereateFilterData('New');
+    }else{
+        genereateWithoutData();
+    }
 
 })
-checkBox.onclick=()=>{
-    genereateFilterData('Packed');
+checkBox.addEventListener('click',(e)=>{
+    if(e.target.checked){
+        genereateFilterData('Packed');
+    }else{
+        genereateWithoutData();
+    }
+})
+var logoutAction = document.getElementById('logoutAction')
+var logoutBtn = document.getElementById('logoutBtn')
+logoutBtn.addEventListener('click',()=>{
+    logoutAction.action = "/index.html"
+})
+
+function genereateWithoutData(){
+    var xhttp= new XMLHttpRequest();
+    var apiEndpoint="https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders";
+    xhttp.open('GET',apiEndpoint, true );
+    xhttp.onreadystatechange= function(){
+        if(this.readyState===4){
+            tableBody.innerHTML="";
+            console.log(JSON.parse(this.responseText));
+            var responseArray  =JSON.parse(this.responseText);
+            for (var i=0; i<responseArray.length; i++){
+                 tableBody.appendChild(generateOrders(responseArray[i]));
+                    count.innerHTML = 'Count : ' + responseArray.length;
+            }
+        }
+    }
+    xhttp.send()
 }
-
 function genereateFilterData(filter){
     var xhttp= new XMLHttpRequest();
     var apiEndpoint="https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders";
@@ -31,7 +69,7 @@ function genereateFilterData(filter){
             var responseArray  =JSON.parse(this.responseText);
             for (var i=0; i<responseArray.length; i++){
                 if(responseArray[i].orderStatus === filter){
-                    console.log(tableBody.appendChild(generateOrders(responseArray[i])));
+                 tableBody.appendChild(generateOrders(responseArray[i]));
                     count.innerHTML = 'Count : ' + responseArray.length;
                 }
             }
