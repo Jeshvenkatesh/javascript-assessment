@@ -1,0 +1,35 @@
+.nav-link{
+    text-decoration: none;
+    color:white;
+}
+a:hover{
+    color:white;
+}
+.navbar-brand{
+    text-decoration: none;
+    color:white;
+    font-size:2rem;
+}
+.btn-primary{
+    margin-left:45rem;
+}
+.mainWrapper{
+    display: flex;
+}
+.filterWrapper{
+    width:15rem;
+}
+.checkbox{
+    margin-bottom:1rem;
+}
+.checkbox input{
+    margin-right:.5rem;
+}
+#myCheck,#myCheckNew,#myCheck2,#myCheck3{
+    border:none;
+    background-color: transparent;
+}
+#myCheck,#myCheckNew,#myCheck2,#myCheck3 :active{
+    border:none;
+    background-color: transparent;
+}
